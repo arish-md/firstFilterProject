@@ -1,0 +1,134 @@
+<div class=" text-center mt-3 mb-4 ">
+    <button (click)="all()">All</button>
+    <button (click)="manager()">Manager</button>
+    <button (click)="assistant()">Assistant Manager</button>
+    <button (click)="sales()">Sales Manager</button>
+    <button (click)="consultant()">Sales Consultant</button>
+</div>
+
+<div class="container shadow cont-design">
+    <div class="row">
+        <div class="search-name mt-4 mb-2">
+            <input type="text" name="search" [(ngModel)]="searchText" placeholder="Search by Id,Name,Email,Designation">
+
+        </div>
+
+
+
+
+        <div *ngIf="designation!='All'" class="table-design text-center shadow">
+
+            <table class="table table-striped">
+                <thead class="font-design">
+                    <tr>
+                        <th scope="col"></th>
+                        <th class="font-design" scope="col">Id</th>
+                        <th class="font-design" scope="col">Name</th>
+                        <th class="font-design" scope="col">Email</th>
+                        <th class="font-design" scope="col">Designation</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let i of apiData | filter:searchText">
+                    <tr *ngIf="i.Designation==designation">
+
+                        <th scope="row"></th>
+                        <td class="font-design">{{i.id}}</td>
+                        <td class="font-design">{{i.Name}}</td>
+                        <td class="font-design">{{i.Email}}</td>
+                        <td class="font-design">{{i.Designation}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+
+
+        <div *ngIf="designation=='All'" class="table-design text-center">
+
+            <table class="table">
+                <thead class="font-design">
+                    <tr class="font-design">
+                        <th scope="col"></th>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Designation</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let i of apiData | filter:searchText">
+                    <tr class="font-design">
+
+                        <th scope="row"></th>
+                        <td>{{i.id}}</td>
+                        <td>{{i.Name}}</td>
+                        <td>{{i.Email}}</td>
+                        <td>{{i.Designation}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/add-button-3208622-2732907.png" alt=""
+    class="img-design " data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Enter Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="myReactiveForm" (ngSubmit)="onSubmit()">
+                    <div class="mb-3">
+                        <label for="id" class="form-label">Id</label>
+                        <input type="number" class="form-control" id="id" formControlName="Id">
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" formControlName="Name">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" formControlName="Email">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="designation" class="form-label">Designation</label>
+                        <input type="text" class="form-control" id="designation" formControlName="Designation">
+                    </div>
+
+
+                </form>
+
+
+
+
+
+
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="onSubmit()">Save changes</button>
+
+            </div>
+        </div>
+    </div>
+
+</div>

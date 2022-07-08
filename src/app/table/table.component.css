@@ -1,0 +1,25 @@
+.cont-design{
+    background-color: black;
+    
+}
+.font-design{
+    color: white;
+}
+.table-design{
+    width: 80%;
+    margin-left: 10%;
+    border: 2px solid white;
+    background-color: grey;
+   
+   
+}
+.img-design{
+    height: 80px;
+    width: 80px;
+    margin-left: 85%;
+    
+}
+
+.search-name{
+    margin-left: 10%;
+}
